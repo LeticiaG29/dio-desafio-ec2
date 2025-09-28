@@ -1,72 +1,60 @@
-# Desafio DIO - Gerenciamento de Instâncias EC2 na AWS
+# Desafio DIO - Laboratório EC2 na AWS
 
- ## Descrição
-Este repositório faz parte do desafio proposto pela **DIO (Digital Innovation One)**, com o objetivo de consolidar conhecimentos sobre **gerenciamento de instâncias EC2 na AWS**.  
-Aqui estão documentados os passos realizados, anotações e insights adquiridos durante a prática.
-
----
-
- ## Objetivos de Aprendizagem
-- Aplicar os conceitos aprendidos em um ambiente prático;
-- Documentar processos técnicos de forma clara e organizada;
-- Utilizar o GitHub como ferramenta de compartilhamento de documentação técnica.
+## Sobre este desafio
+Neste desafio da DIO, meu objetivo foi aprender a criar e gerenciar uma **instância EC2 na AWS**.  
+Aqui estão documentados os passos que realizei e o que aprendi durante a prática.
 
 ---
 
-## Passo a Passo Realizado
+## Objetivos
+- Entender o processo de criação e configuração de uma instância EC2;  
+- Testar acesso à instância via SSH;  
+- Registrar aprendizados e experiências de forma organizada.  
 
-1. **Criação da Instância EC2**
-   - Sistema operacional escolhido: **Amazon Linux 2**
-   - Tipo de instância: **t2.micro (Free Tier)**
-   - Configurações adicionais: armazenamento padrão de 8GB e criação de um par de chaves para acesso SSH.
+---
+
+## Passo a Passo
+
+1. **Criação da Instância**
+   - Escolhi o sistema operacional **Amazon Linux 2**;  
+   - Tipo da instância: **t2.micro** (gratuita no Free Tier);  
+   - Criei um par de chaves para poder acessar a instância via SSH;  
+   - Mantive o armazenamento padrão de 8GB.  
 
 2. **Configuração do Grupo de Segurança**
-   - Porta **22 (SSH)** liberada apenas para meu IP;
-   - Porta **80 (HTTP)** liberada para acesso via navegador;
-   - Sem outras regras adicionais.
+   - Liberada a porta **22 (SSH)** somente para o meu IP;  
+   - Liberada a porta **80 (HTTP)** para poder acessar páginas pelo navegador.  
 
 3. **Acesso à Instância**
-   - Método de acesso: **Terminal via SSH**
+   - Usei o terminal para me conectar via SSH;  
    - Comando utilizado:  
      ```bash
      ssh -i "minha-chave.pem" ec2-user@SEU_IP_PUBLICO
-     ```
+     ```  
 
 4. **Testes Realizados**
-   - Atualização dos pacotes:  
+   - Atualizei os pacotes da instância:  
      ```bash
      sudo yum update -y
-     ```
-   - Instalação do Apache:  
+     ```  
+   - Instalei o servidor Apache e iniciei o serviço:  
      ```bash
      sudo yum install -y httpd
      sudo systemctl start httpd
      sudo systemctl enable httpd
-     ```
-   - Teste no navegador acessando `http://SEU_IP_PUBLICO`, exibindo a página padrão do Apache.
+     ```  
+   - Acessei `http://SEU_IP_PUBLICO` no navegador e a página padrão do Apache carregou.
 
 ---
 
-##  Evidências (prints de tela)
-- Instância criada no **console da AWS**  
-- Conexão bem-sucedida via **SSH**  
-- Página padrão do **Apache** acessada pelo navegador  
+## Aprendizados
+- Entendi como criar e configurar uma instância EC2 do zero;  
+- Notei a importância de liberar as portas corretas no grupo de segurança;  
+- Aprendi que ao parar a instância, o IP público muda;  
+- Ganhei confiança em usar SSH e executar comandos básicos na instância.
 
 ---
 
-##  Insights e Aprendizados
-- Aprendi a criar e configurar uma instância EC2 do zero;  
-- Entendi a importância de configurar corretamente o grupo de segurança para liberar portas;  
-- Descobri que ao **parar a instância**, o **IP público muda**, o que pode impactar no acesso;  
-- A prática reforçou o cuidado com permissões e chaves privadas para garantir segurança.
-
----
-
-##  Referências
-- [Documentação oficial da AWS EC2](https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html)  
-- Materiais da **DIO** sobre AWS e EC2  
-
----
-
-##  Conclusão
-Esse desafio foi essencial para reforçar a prática em **EC2 na AWS**, entendendo desde a criação e configuração de instâncias até a conexão e uso em ambiente real.
+## Referências
+- [Documentação oficial AWS EC2](https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html)  
+- Material da **DIO** sobre EC2 e AWS.
